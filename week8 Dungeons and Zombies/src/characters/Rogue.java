@@ -23,4 +23,10 @@ public class Rogue extends Hero {
 		return "Rogue";
 	}
 
+	@Override
+	public void getAvailableMoves() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

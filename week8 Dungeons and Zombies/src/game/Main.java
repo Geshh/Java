@@ -7,6 +7,7 @@ import characters.Hunter;
 import characters.Mage;
 import characters.Rogue;
 import characters.Warrior;
+import damageDealers.Spell;
 import damageDealers.Weapon;
 
 public class Main {
@@ -57,6 +58,12 @@ public class Main {
 		int weaponChoice = scanner.nextInt();
 		Weapon weapon = hero.readAndEquipWeapon(weaponChoice, hero.getHeroClass());
 		hero.equip(weapon);
+		System.out.println("Time to choose your primary spell! ");
+		hero.getAvailableSpells(hero.getHeroClass());
+		int spellChoice = scanner.nextInt();
+		Spell spell = hero.readAndEquipSpells(spellChoice, hero.getHeroClass());
+		hero.learn(spell);
+		
 
 		scanner.close();
 	}

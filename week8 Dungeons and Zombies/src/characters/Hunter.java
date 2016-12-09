@@ -23,4 +23,10 @@ public class Hunter extends Hero {
 		return "Hunter";
 	}
 
+	@Override
+	public void getAvailableMoves() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

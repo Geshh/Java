@@ -23,4 +23,10 @@ public class Mage extends Hero {
 		return "Mage";
 	}
 
+	@Override
+	public void getAvailableMoves() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
