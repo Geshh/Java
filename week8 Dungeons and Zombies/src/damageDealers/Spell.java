@@ -1,50 +1,30 @@
 package damageDealers;
 
-public class Spell {
-	
+public class Spell extends DamageDealers {
+
 	private String name;
 	private int damage;
 	private int manaCost;
 	private int castRange;
-	
-	public String getName() {
-		return name;
+
+	public Spell(String name, int damage, int manaCost, int castRange) {
+		super(name, damage);
+		this.manaCost = manaCost;
+		this.castRange = castRange;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getDamage() {
-		return damage;
-	}
-
-	public void setDamage(int damage) {
-		this.damage = damage;
+	public void getSpellInfo() {
+		System.out.println("Name: " + this.name);
+		System.out.println("Damage: " + this.damage);
+		System.out.println("Mana Cost: " + this.manaCost);
+		System.out.println("Cast Range: " + this.castRange);
 	}
 
 	public int getManaCost() {
 		return manaCost;
 	}
 
-	public void setManaCost(int manaCost) {
-		this.manaCost = manaCost;
-	}
-
 	public int getCastRange() {
 		return castRange;
 	}
-
-	public void setCastRange(int castRange) {
-		this.castRange = castRange;
-	}
-
-	public Spell(String name, int damage, int manaCost, int castRange) {
-		super();
-		this.name = name;
-		this.damage = damage;
-		this.manaCost = manaCost;
-		this.castRange = castRange;
-	}
-
 }

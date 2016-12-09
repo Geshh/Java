@@ -63,7 +63,21 @@ public class Main {
 		int spellChoice = scanner.nextInt();
 		Spell spell = hero.readAndEquipSpells(spellChoice, hero.getHeroClass());
 		hero.learn(spell);
-		
+
+		switch (hero.getHeroClass()) {
+		case "Warrior":
+			System.out.println("Your warrior can also carry one additional weapon which he can swap or throw at enemies!");
+			break;
+		case "Mage":
+			System.out.println("Your mage can also learn one additional spell!");
+			break;
+		case "Rogue":
+			System.out.println("Your rogue can also carry one additional weapon and throw it at enemies!");
+			break;
+		case "Hunter":
+			System.out.println("Your hunter is bullshit!");
+			break;
+		}
 
 		scanner.close();
 	}
