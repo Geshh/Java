@@ -42,6 +42,7 @@ public abstract class Hero extends Unit {
 
 		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
 		FILENAME += heroClass;
+		FILENAME += "Weapons";
 
 		BufferedReader br = null;
 		FileReader fr = null;
@@ -68,20 +69,20 @@ public abstract class Hero extends Unit {
 	public Weapon readAndEquipWeapon(int choice, String heroClass) {
 		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
 		FILENAME += heroClass;
+		FILENAME += "Weapons";
 
 		BufferedReader br = null;
 		FileReader fr = null;
 
-		String sCurrentLine="";
-		
+		String sCurrentLine = "";
+
 		try {
 			fr = new FileReader(FILENAME);
 			br = new BufferedReader(fr);
 
-
 			br = new BufferedReader(new FileReader(FILENAME));
 			int counter = 1;
-			while ((sCurrentLine = br.readLine()) != null && counter!=choice) {
+			while ((sCurrentLine = br.readLine()) != null && counter != choice) {
 				counter++;
 			}
 
@@ -89,23 +90,21 @@ public abstract class Hero extends Unit {
 
 			e.printStackTrace();
 		}
-		System.out.println(sCurrentLine);
-		
+		System.out.println("You chose : " + sCurrentLine);
+
 		String[] parts = sCurrentLine.split(",Damage:");
 		parts[0] = parts[0].trim();
 		parts[1] = parts[1].trim();
-		for(int i=0;i<parts.length;i++) {
-			System.out.println(parts[i]);
-		}
+
 		int weaponDamage = Integer.parseInt(parts[1]);
-		
-		Weapon weapon = new Weapon(parts[0] , weaponDamage);
-		
+
+		Weapon weapon = new Weapon(parts[0], weaponDamage);
+
 		return weapon;
 	}
-	
+
 	public abstract String getHeroClass();
-	
+
 	public abstract void usePassiveAbility(Enemy enemy);
 
 }
