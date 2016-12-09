@@ -3,7 +3,6 @@ package game;
 import java.util.Scanner;
 
 import characters.Hero;
-import characters.Hunter;
 import characters.Mage;
 import characters.Rogue;
 import characters.Warrior;
@@ -44,9 +43,9 @@ public class Main {
 		case 3:
 			hero = new Rogue(name, title, health, mana, manaRegen);
 			break;
-		case 4:
-			hero = new Hunter(name, title, health, mana, manaRegen);
-			break;
+//		case 4:
+//			hero = new Hunter(name, title, health, mana, manaRegen);
+//			break;
 		default:
 			hero = new Warrior(name, title, health, mana, manaRegen);
 			break;
@@ -74,10 +73,9 @@ public class Main {
 		case "Rogue":
 			System.out.println("Your rogue can also carry one additional weapon and throw it at enemies!");
 			break;
-		case "Hunter":
-			System.out.println("Your hunter is bullshit!");
-			break;
 		}
+		
+		
 
 		scanner.close();
 	}

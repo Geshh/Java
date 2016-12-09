@@ -1,15 +1,19 @@
 package characters;
 
+import damageDealers.Weapon;
+
 public class Rogue extends Hero {
+
+	Weapon secondaryWeapon;
 
 	public Rogue(String name, String title, int health, int mana, int manaRegen) {
 		super(name, title, health, mana, manaRegen);
+		secondaryWeapon = new Weapon("Dagger", 15);
 	}
 
 	@Override
-	public void usePassiveAbility(Enemy enemy) {
-		// TODO Auto-generated method stub
-
+	public void usePassiveAbility() {
+		System.out.println("Stealth attack");
 	}
 
 	@Override
@@ -25,8 +29,15 @@ public class Rogue extends Hero {
 
 	@Override
 	public void getAvailableMoves() {
-		// TODO Auto-generated method stub
-		
+		if (this.secondaryWeapon != null) {
+			System.out.println("-Throw secondary wep at enemy.");
+		}
+		if (this.getMana() >= this.primarySpell.getManaCost()) {
+			System.out.println("-Use primary spell.");
+		}
+		System.out.println("-Smash with primary weapon.");
+		System.out.println("-Step back.");
+		System.out.println("-Use potion.");
 	}
 
 }

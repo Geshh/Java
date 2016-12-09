@@ -162,6 +162,6 @@ public abstract class Hero extends Unit {
 
 	public abstract String getHeroClass();
 
-	public abstract void usePassiveAbility(Enemy enemy);
+	public abstract void usePassiveAbility();
 
 }

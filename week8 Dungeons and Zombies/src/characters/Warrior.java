@@ -10,11 +10,10 @@ public class Warrior extends Hero {
 		super(name, title, health, mana, manaRegen);
 		secondaryWeapon = new Weapon("Throwable axe", 50);
 	}
-	
-	@Override
-	public void usePassiveAbility(Enemy enemy) {
-		// TODO Auto-generated method stub
 
+	@Override
+	public void usePassiveAbility() {
+		System.out.println("Bloodthirsty");
 	}
 
 	@Override
@@ -30,28 +29,14 @@ public class Warrior extends Hero {
 
 	@Override
 	public void getAvailableMoves() {
-		if(this.secondaryWeapon!=null) {
-			System.out.println("-Throw axe at enemy.");
+		if (this.secondaryWeapon != null) {
+			System.out.println("-Throw secondary wep at enemy.");
 		}
-		if(this.getMana()>=this.primarySpell.getManaCost()) {
+		if (this.getMana() >= this.primarySpell.getManaCost()) {
 			System.out.println("-Use primary spell.");
 		}
 		System.out.println("-Smash with primary weapon.");
-		System.out.println("-Step back.");
 		System.out.println("-Use potion.");
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
