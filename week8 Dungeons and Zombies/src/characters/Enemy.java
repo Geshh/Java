@@ -16,10 +16,7 @@ public class Enemy extends Unit {
 
 	@Override
 	public void attack() {
-		//DJASLFDSJLFKDSFJKLDSFJKLDSFJKLDSFJDSKL
-		if (damage > 1) {
-			damage += 1;
-		}
+		//TODO
 	}
 
 }

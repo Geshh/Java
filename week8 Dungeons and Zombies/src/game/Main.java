@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Hello ,player! ");
+		System.out.println("Hello ,Motherfucker! ");
 		System.out.println("Welcome to Dungeons and Zombies!");
 		System.out.println("Before we let you into the dungeons you must create your Hero!!!!");
 		System.out.println("Enter your name: ");
