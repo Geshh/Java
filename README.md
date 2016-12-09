@@ -1,3 +1,3 @@
 # Java
 
-Java 101
+Java
