@@ -5,14 +5,65 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
+import java.util.Scanner;
+
+import characters.Hero;
+import damageDealers.Spell;
+import damageDealers.Weapon;
+import treasures.Treasures;
 
 public class Dungeon {
 
 	private String[][] map;
 	private Position curHeroPosition;
+	private boolean isLevelComplete;
+	private Hero hero;
 
-	public Dungeon() {
-		generateMap();
+	public Dungeon(String levelName, Hero hero) {
+		generateMap(levelName);
+		isLevelComplete = false;
+		this.hero = hero;
+	}
+
+	private void pickTreasure(int choice) {
+		Treasures treasure;
+		Scanner scanner = new Scanner(System.in);
+		String answer;
+		switch (choice) {
+		case 0:
+			System.out.println("Sorry treasure is empty\n");
+			break;
+		case 1:
+			treasure = new Treasures();
+			Spell spell = treasure.getRandomSpell();
+			System.out.println("You found ");
+			spell.getSpellInfo();
+			System.out.println("Do you with to learn new spell and replace it with your current primary spell?");
+			System.out.println("Yes/No:");
+			answer = scanner.nextLine();
+			if (answer.equals("Yes")) {
+				hero.learn(spell);
+			}
+		case 2:
+			treasure = new Treasures();
+			Weapon weapon = treasure.getRandomWeapon();
+			System.out.println("You found ");
+			weapon.getWeaponInfo();
+			System.out.println("Do you with to equip new wapon and replace it with your current primary weapon?");
+			answer = scanner.nextLine();
+			if (answer.equals("Yes")) {
+				hero.equip(weapon);
+			}
+		case 3:
+			System.out.println("Your hero found a potion , Max health and mana! \n");
+			hero.takeHealing(Integer.MAX_VALUE);
+			hero.takeMana(Integer.MAX_VALUE);
+		}
+	}
+
+	public boolean isLevelComplete() {
+		return isLevelComplete;
 	}
 
 	public void moveHero(String direction) {
@@ -28,9 +79,13 @@ public class Dungeon {
 					// START FIGHT
 				} else if (destination.equals("T")) {
 					System.out.println("TREASURE");
+					Random randomGen = new Random();
+					int randomNumber = randomGen.nextInt(4);
+					pickTreasure(randomNumber);
 					// OPEN TREASURE
 				} else if (destination.equals("G")) {
 					System.out.println("LEVEL COMPLETED");
+					isLevelComplete = true;
 					// LEVEL COMPLETE
 				} else if (destination.equals("#")) {
 					System.out.println("Obstacle encountered , move other direction ");
@@ -51,9 +106,13 @@ public class Dungeon {
 					// START FIGHT
 				} else if (destination.equals("T")) {
 					System.out.println("TREASURE");
+					Random randomGen = new Random();
+					int randomNumber = randomGen.nextInt(4);
+					pickTreasure(randomNumber);
 					// OPEN TREASURE
 				} else if (destination.equals("G")) {
 					System.out.println("LEVEL COMPLETED");
+					isLevelComplete = true;
 					// LEVEL COMPLETE
 				} else if (destination.equals("#")) {
 					System.out.println("Obstacle encountered , move other direction ");
@@ -74,9 +133,13 @@ public class Dungeon {
 					// START FIGHT
 				} else if (destination.equals("T")) {
 					System.out.println("TREASURE");
+					Random randomGen = new Random();
+					int randomNumber = randomGen.nextInt(4);
+					pickTreasure(randomNumber);
 					// OPEN TREASURE
 				} else if (destination.equals("G")) {
 					System.out.println("LEVEL COMPLETED");
+					isLevelComplete = true;
 					// LEVEL COMPLETE
 				} else if (destination.equals("#")) {
 					System.out.println("Obstacle encountered , move other direction ");
@@ -94,12 +157,18 @@ public class Dungeon {
 				String destination = map[curHeroPosition.getX() + 1][curHeroPosition.getY()];
 				if (destination.equals("E")) {
 					System.out.println("ENEMY");
+					System.out.println("1: Manual fight");
+					System.out.println("2: Automatic fight");
 					// START FIGHT
 				} else if (destination.equals("T")) {
 					System.out.println("TRESURE");
+					Random randomGen = new Random();
+					int randomNumber = randomGen.nextInt(4);
+					pickTreasure(randomNumber);
 					// OPEN TREASURE
 				} else if (destination.equals("G")) {
 					System.out.println("LEVEL COMPLETED");
+					isLevelComplete = true;
 					// LEVEL COMPLETE
 				} else if (destination.equals("#")) {
 					System.out.println("Obstacle encountered , move other direction ");
@@ -133,10 +202,11 @@ public class Dungeon {
 		}
 	}
 
-	private void generateMap() {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Levels/Level1";
+	private void generateMap(String levelName) {
+		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Levels/";
+		FILENAME += levelName;
 
-		Queue<String> levels = new LinkedList<>();
+		Queue<String> rows = new LinkedList<>();
 
 		BufferedReader br = null;
 		FileReader fr = null;
@@ -149,17 +219,17 @@ public class Dungeon {
 
 			br = new BufferedReader(new FileReader(FILENAME));
 
-			while ((sCurrentLine = br.readLine()) != null) {
-				levels.add(sCurrentLine);
+			while ((sCurrentLine = br.readLine()) != null && !sCurrentLine.equals("")) {
+				rows.add(sCurrentLine);
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		map = new String[levels.size()][];
+		map = new String[rows.size()][];
 		for (int i = 0; i < map.length; i++) {
-			String line = levels.poll();
+			String line = rows.poll();
 			map[i] = new String[line.length()];
 
 			for (int j = 0; j < line.length(); j++) {
@@ -180,5 +250,4 @@ public class Dungeon {
 			System.out.println();
 		}
 	}
-
 }

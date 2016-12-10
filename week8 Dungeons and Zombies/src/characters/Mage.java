@@ -19,7 +19,6 @@ public class Mage extends Hero {
 	@Override
 	public void attack() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
