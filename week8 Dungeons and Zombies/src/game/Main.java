@@ -28,9 +28,9 @@ public class Main {
 		int manaRegen = scanner.nextInt();
 		System.out.println("Well done " + name);
 
-		System.out.println("In this game you can choose to specialize in 4 different classes: ");
+		System.out.println("In this game you can choose to specialize in 3 different classes: ");
 		System.out.println("-Warrior\n-Mage\n-Rogue\n-Hunter\n");
-		System.out.println("Choose a class (1:Warrior , 2:Mage , 3:Rogue , 4:Hunter) : ");
+		System.out.println("Choose a class (1:Warrior , 2:Mage , 3:Rogue ) : ");
 		int choice = scanner.nextInt();
 		Hero hero;
 		switch (choice) {
@@ -43,9 +43,6 @@ public class Main {
 		case 3:
 			hero = new Rogue(name, title, health, mana, manaRegen);
 			break;
-//		case 4:
-//			hero = new Hunter(name, title, health, mana, manaRegen);
-//			break;
 		default:
 			hero = new Warrior(name, title, health, mana, manaRegen);
 			break;
