@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import characters.Hero;
@@ -12,7 +13,7 @@ import dungeon.Dungeon;
 
 public class Main {
 	public static void main(String[] args) {
-
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Hello ,Motherfucker! ");
 		System.out.println("Welcome to Dungeons and Zombies!");

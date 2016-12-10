@@ -43,22 +43,27 @@ public class Dungeon {
 			System.out.println("Yes/No:");
 			answer = scanner.nextLine();
 			if (answer.equals("Yes")) {
+				System.out.println("New spell learned!");
 				hero.learn(spell);
 			}
+			break;
 		case 2:
 			treasure = new Treasures();
 			Weapon weapon = treasure.getRandomWeapon();
 			System.out.println("You found ");
 			weapon.getWeaponInfo();
-			System.out.println("Do you with to equip new wapon and replace it with your current primary weapon?");
+			System.out.println("Do you with to equip new weapon and replace it with your current primary weapon?");
 			answer = scanner.nextLine();
 			if (answer.equals("Yes")) {
+				System.out.println("New weapon equiped");
 				hero.equip(weapon);
 			}
+			break;
 		case 3:
 			System.out.println("Your hero found a potion , Max health and mana! \n");
-			hero.takeHealing(Integer.MAX_VALUE);
-			hero.takeMana(Integer.MAX_VALUE);
+			hero.takeHealing(50);
+			hero.takeMana(25);
+			break;
 		}
 	}
 

@@ -2,8 +2,6 @@ package damageDealers;
 
 public class Spell extends DamageDealers {
 
-	private String name;
-	private int damage;
 	private int manaCost;
 	private int castRange;
 
@@ -14,8 +12,8 @@ public class Spell extends DamageDealers {
 	}
 
 	public void getSpellInfo() {
-		System.out.println("Name: " + this.name);
-		System.out.println("Damage: " + this.damage);
+		System.out.println("Name: " + this.getName());
+		System.out.println("Damage: " + this.getDamage());
 		System.out.println("Mana Cost: " + this.manaCost);
 		System.out.println("Cast Range: " + this.castRange);
 	}
