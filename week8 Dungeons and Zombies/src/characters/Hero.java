@@ -39,7 +39,7 @@ public abstract class Hero extends Unit {
 	}
 
 	public void getAvailableSpells(String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
+		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Spells/";
 		FILENAME += heroClass;
 		FILENAME += "Spells";
 
@@ -64,7 +64,7 @@ public abstract class Hero extends Unit {
 	}
 
 	public void getAvailableWeapons(String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
+		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Weapons/";
 		FILENAME += heroClass;
 		FILENAME += "Weapons";
 
@@ -89,7 +89,7 @@ public abstract class Hero extends Unit {
 
 	@SuppressWarnings("resource")
 	public Spell readAndEquipSpells(int choice, String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
+		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Spells/";
 		FILENAME += heroClass;
 		FILENAME += "Spells";
 
@@ -126,7 +126,7 @@ public abstract class Hero extends Unit {
 
 	@SuppressWarnings("resource")
 	public Weapon readAndEquipWeapon(int choice, String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/";
+		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Weapons/";
 		FILENAME += heroClass;
 		FILENAME += "Weapons";
 
