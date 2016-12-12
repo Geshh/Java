@@ -38,6 +38,22 @@ public abstract class Hero extends Unit {
 		this.primarySpell = spell;
 	}
 
+	public Spell getPrimarySpell() {
+		return primarySpell;
+	}
+
+	public Weapon getPrimaryWeapon() {
+		return primaryWeapon;
+	}
+
+	public int getPrimaryWeaponDamage() {
+		return primaryWeapon.getDamage();
+	}
+
+	public int getPrimarySpellDamage() {
+		return primarySpell.getDamage();
+	}
+
 	public void getAvailableSpells(String heroClass) {
 		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Spells/";
 		FILENAME += heroClass;
@@ -157,6 +173,8 @@ public abstract class Hero extends Unit {
 
 		return new Weapon(parts[0], weaponDamage);
 	}
+
+	public abstract int getSecondaryDamage();
 
 	public abstract void getAvailableMoves();
 

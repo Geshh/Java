@@ -17,7 +17,7 @@ public class Warrior extends Hero {
 	}
 
 	@Override
-	public void attack(String type) {
+	public void attack() {
 		// TODO Auto-generated method stub
 
 	}
@@ -37,6 +37,14 @@ public class Warrior extends Hero {
 		}
 		System.out.println("-Smash with primary weapon.");
 		System.out.println("-Use potion.");
+	}
+
+	@Override
+	public int getSecondaryDamage() {
+		if (secondaryWeapon != null) {
+			return secondaryWeapon.getDamage();
+		}
+		return 0;
 	}
 
 }

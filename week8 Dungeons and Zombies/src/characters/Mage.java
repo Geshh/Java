@@ -17,7 +17,7 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public void attack(String type) {
+	public void attack() {
 		
 	}
 
@@ -36,6 +36,11 @@ public class Mage extends Hero {
 		}
 		System.out.println("-Smash with primary weapon.");
 		System.out.println("-Use potion.");
+	}
+
+	@Override
+	public int getSecondaryDamage() {
+		return secondarySpell.getDamage();
 	}
 
 }

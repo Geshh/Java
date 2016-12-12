@@ -51,9 +51,9 @@ public abstract class Unit {
 			currentMana = this.mana;
 		} else {
 			currentMana += mana;
-		}
+		}	
 	}
 
-	public abstract void attack(String type);
+	public abstract void attack();
 
 }
