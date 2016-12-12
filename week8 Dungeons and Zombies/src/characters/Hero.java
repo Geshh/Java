@@ -120,7 +120,7 @@ public abstract class Hero extends Unit {
 		int spellDamage = Integer.parseInt(stats[0]);
 		int spellManaCost = Integer.parseInt(stats[1]);
 		int spellRange = Integer.parseInt(stats[2]);
-		
+
 		return new Spell(parts[0], spellDamage, spellManaCost, spellRange);
 	}
 
