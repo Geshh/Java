@@ -17,7 +17,7 @@ public class Warrior extends Hero {
 	}
 
 	@Override
-	public void attack() {
+	public void attack(String type) {
 		// TODO Auto-generated method stub
 
 	}

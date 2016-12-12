@@ -110,7 +110,7 @@ public class Main {
 			while (!dungeon.isLevelComplete()) {
 				System.out.println("\nMove:");
 				movement = scanner.next();
-				dungeon.moveHero(movement);
+				dungeon.moveHero(movement,scanner);
 				dungeon.printMap();
 
 			}

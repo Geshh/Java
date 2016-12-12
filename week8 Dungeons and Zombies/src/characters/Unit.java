@@ -54,6 +54,6 @@ public abstract class Unit {
 		}
 	}
 
-	public abstract void attack();
+	public abstract void attack(String type);
 
 }

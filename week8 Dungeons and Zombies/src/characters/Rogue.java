@@ -17,7 +17,7 @@ public class Rogue extends Hero {
 	}
 
 	@Override
-	public void attack() {
+	public void attack(String type) {
 		// TODO Auto-generated method stub
 
 	}

@@ -8,9 +8,11 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 
+import characters.Enemy;
 import characters.Hero;
 import damageDealers.Spell;
 import damageDealers.Weapon;
+import fight.Fight;
 import treasures.Treasures;
 
 public class Dungeon {
@@ -68,7 +70,7 @@ public class Dungeon {
 		return isLevelComplete;
 	}
 
-	public void moveHero(String direction) {
+	public void moveHero(String direction, Scanner scanner) {
 
 		String destination = "";
 		int newX = curHeroPosition.getX();
@@ -114,19 +116,45 @@ public class Dungeon {
 		}
 
 		if (destination.equals("#")) {
-			System.out.println("OBSTACLE");
+			System.out.println("Your hero hit a wall , be careful!");
+
 		} else if (!destination.equals("")) {
+
 			if (destination.equals("E")) {
-				System.out.println("ENEMY");
+				System.out.println("Enemy has approached!\nYou have to fight it!!");
+				System.out.println(
+						"You want to take care of it by yourself or let the game automatically play the battle? :");
 				System.out.println("1: Manual fight");
 				System.out.println("2: Automatic fight");
+				int choice = scanner.nextInt();
+
+				//Generate enemy
+				int temp = hero.getHealth() / 2;
+				Random rand = new Random();
+				int enemyHealth = rand.nextInt(temp) + temp;
+				temp = hero.getMana() / 2;
+				int enemyMana = rand.nextInt(temp) + temp;
+
+				Enemy enemy = new Enemy(enemyHealth, enemyMana, 25);
+
+				switch (choice) {
+				case 1:
+					System.out.println("You chose to fight the enemy alone!Good Luck!");
+					Fight.manualFight(hero, enemy);
+					break;
+				case 2:
+					System.out.println("Lay back and enjoy the fight!");
+					break;
+				}
+
 			} else if (destination.equals("T")) {
-				System.out.println("TRESURE");
+				System.out.println("Treasure found!!!");
 				Random randomGen = new Random();
 				int randomNumber = randomGen.nextInt(4);
 				pickTreasure(randomNumber);
+
 			} else if (destination.equals("G")) {
-				System.out.println("LEVEL COMPLETED");
+				System.out.println("Level Completed!!");
 				isLevelComplete = true;
 			}
 			hero.takeDamage(hero.getManaRegen());
