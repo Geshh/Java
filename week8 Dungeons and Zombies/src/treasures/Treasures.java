@@ -11,7 +11,7 @@ import damageDealers.Weapon;
 public class Treasures {
 
 	@SuppressWarnings("resource")
-	public Spell getRandomSpell() {
+	public static Spell getRandomSpell() {
 		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Treasures/";
 		FILENAME += "Spells";
 
@@ -46,12 +46,12 @@ public class Treasures {
 		int spellRange = Integer.parseInt(stats[2]);
 
 		Spell spell = new Spell(parts[0], spellDamage, spellManaCost, spellRange);
-
+		System.out.println("New spell found: ");
 		return spell;
 	}
 
 	@SuppressWarnings("resource")
-	public Weapon getRandomWeapon() {
+	public static Weapon getRandomWeapon() {
 		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Treasures/";
 		FILENAME += "Weapons";
 
@@ -76,16 +76,14 @@ public class Treasures {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("You chose : " + sCurrentLine);
-
 		String[] parts = sCurrentLine.split(",Damage:");
 		parts[0] = parts[0].trim();
 		parts[1] = parts[1].trim();
 
 		int weaponDamage = Integer.parseInt(parts[1]);
-		
-		Weapon weapon = new Weapon(parts[0], weaponDamage);
 
+		Weapon weapon = new Weapon(parts[0], weaponDamage);
+		System.out.println("New weapon found: ");
 		return weapon;
 	}
 

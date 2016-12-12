@@ -26,8 +26,8 @@ public class Dungeon {
 		this.hero = hero;
 	}
 
+	@SuppressWarnings("resource")
 	private void pickTreasure(int choice) {
-		Treasures treasure;
 		Scanner scanner = new Scanner(System.in);
 		String answer;
 		switch (choice) {
@@ -35,9 +35,7 @@ public class Dungeon {
 			System.out.println("Sorry treasure is empty\n");
 			break;
 		case 1:
-			treasure = new Treasures();
-			Spell spell = treasure.getRandomSpell();
-			System.out.println("You found ");
+			Spell spell = Treasures.getRandomSpell();
 			spell.getSpellInfo();
 			System.out.println("Do you with to learn new spell and replace it with your current primary spell?");
 			System.out.println("Yes/No:");
@@ -48,8 +46,7 @@ public class Dungeon {
 			}
 			break;
 		case 2:
-			treasure = new Treasures();
-			Weapon weapon = treasure.getRandomWeapon();
+			Weapon weapon = Treasures.getRandomWeapon();
 			System.out.println("You found ");
 			weapon.getWeaponInfo();
 			System.out.println("Do you with to equip new weapon and replace it with your current primary weapon?");
@@ -96,6 +93,7 @@ public class Dungeon {
 					System.out.println("Obstacle encountered , move other direction ");
 					break;
 				}
+				hero.takeMana(hero.getManaRegen());
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
 				curHeroPosition.setY(curHeroPosition.getY() - 1);
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
@@ -123,6 +121,7 @@ public class Dungeon {
 					System.out.println("Obstacle encountered , move other direction ");
 					break;
 				}
+				hero.takeMana(hero.getManaRegen());
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
 				curHeroPosition.setY(curHeroPosition.getY() + 1);
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
@@ -150,6 +149,7 @@ public class Dungeon {
 					System.out.println("Obstacle encountered , move other direction ");
 					break;
 				}
+				hero.takeMana(hero.getManaRegen());
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
 				curHeroPosition.setX(curHeroPosition.getX() - 1);
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
@@ -177,8 +177,10 @@ public class Dungeon {
 					// LEVEL COMPLETE
 				} else if (destination.equals("#")) {
 					System.out.println("Obstacle encountered , move other direction ");
+					
 					break;
 				}
+				hero.takeMana(hero.getManaRegen());
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
 				curHeroPosition.setX(curHeroPosition.getX() + 1);
 				map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";

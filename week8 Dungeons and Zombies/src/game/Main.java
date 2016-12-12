@@ -1,6 +1,5 @@
 package game;
 
-import java.util.Random;
 import java.util.Scanner;
 
 import characters.Hero;
@@ -13,7 +12,7 @@ import dungeon.Dungeon;
 
 public class Main {
 	public static void main(String[] args) {
-		
+
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Hello ,Motherfucker! ");
 		System.out.println("Welcome to Dungeons and Zombies!");
@@ -76,6 +75,26 @@ public class Main {
 		}
 
 		System.out.println(hero.knownAs() + " you are ready!\n");
+		System.out.println("Some info about your hero: \n");
+		System.out.println(hero.knownAs());
+		System.out.println("Class :" + hero.getHeroClass());
+		System.out.println("Health :" + hero.getHealth());
+		System.out.println("Mana :" + hero.getMana());
+		System.out.println("Mana Regen :" + hero.getManaRegen());
+		System.out.println("\nPrimary Weapon : ");
+		weapon.getWeaponInfo();
+		System.out.println("\nPrimary spell : ");
+		spell.getSpellInfo();
+		if (hero.getHeroClass().equals("Mage")) {
+			System.out.println("\nSecondary spell: ");
+			System.out.println("Name: Fireball \nDamage:25\nMana Cost: 40 \nCast Range: 3 ");
+		} else if (hero.getHeroClass().equals("Warrior")) {
+			System.out.println("\nSecondary weapon: ");
+			System.out.println("Name: Throwable axe \nDamage: 50");
+		} else {
+			System.out.println("\nSecondary weapon: ");
+			System.out.println("Name: Dagger \nDamage: 15");
+		}
 
 		for (int i = 0; i < 4; i++) {
 			System.out.println("\nGenerating level " + (i + 1));
@@ -83,6 +102,7 @@ public class Main {
 			Dungeon dungeon = new Dungeon(levelName, hero);
 			dungeon.spawn();
 			System.out.println("\n\n");
+			System.out.println("Hero has spawned! ");
 			dungeon.printMap();
 
 			String movement;
@@ -92,6 +112,7 @@ public class Main {
 				movement = scanner.next();
 				dungeon.moveHero(movement);
 				dungeon.printMap();
+
 			}
 
 		}
