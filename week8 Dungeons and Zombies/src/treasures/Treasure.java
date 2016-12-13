@@ -8,7 +8,7 @@ import java.util.Random;
 import damageDealers.Spell;
 import damageDealers.Weapon;
 
-public class Treasures {
+public class Treasure {
 
 	@SuppressWarnings("resource")
 	public static Spell getRandomSpell() {

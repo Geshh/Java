@@ -51,7 +51,15 @@ public abstract class Unit {
 			currentMana = this.mana;
 		} else {
 			currentMana += mana;
-		}	
+		}
+	}
+
+	public void useMana(int mana) {
+		if (mana > currentMana) {
+			currentMana = 0;
+		} else {
+			currentMana -= mana;
+		}
 	}
 
 	public abstract void attack();

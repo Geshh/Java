@@ -1,10 +1,11 @@
 package characters;
 
+import damageDealers.DamageDealers;
 import damageDealers.Weapon;
 
 public class Warrior extends Hero {
 
-	Weapon secondaryWeapon;
+	private Weapon secondaryWeapon;
 
 	public Warrior(String name, String title, int health, int mana, int manaRegen) {
 		super(name, title, health, mana, manaRegen);
@@ -12,14 +13,14 @@ public class Warrior extends Hero {
 	}
 
 	@Override
-	public void usePassiveAbility() {
-		System.out.println("Bloodthirsty");
+	public void usePassiveAbility(int damage, Enemy enemy) {
+		System.out.println("Warrior got bloodthirsty , healing himself with half of the damage dealt");
+		this.takeHealing(damage / 2);
 	}
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Your warrior attacks the enemy!");
 	}
 
 	@Override
@@ -40,11 +41,8 @@ public class Warrior extends Hero {
 	}
 
 	@Override
-	public int getSecondaryDamage() {
-		if (secondaryWeapon != null) {
-			return secondaryWeapon.getDamage();
-		}
-		return 0;
+	public DamageDealers getSecondaryDmgDealer() {
+		return secondaryWeapon;
 	}
 
 }

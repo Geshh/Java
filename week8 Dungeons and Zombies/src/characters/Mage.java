@@ -1,10 +1,11 @@
 package characters;
 
+import damageDealers.DamageDealers;
 import damageDealers.Spell;
 
 public class Mage extends Hero {
 
-	Spell secondarySpell;
+	private Spell secondarySpell;
 
 	public Mage(String name, String title, int health, int mana, int manaRegen) {
 		super(name, title, health, mana, manaRegen);
@@ -12,13 +13,19 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public void usePassiveAbility() {
-		System.out.println("Freeze");
+	public void usePassiveAbility(int points, Enemy enemy) {
+		System.out.println(
+				"Your mage found hidden power in himself , granting him free spells untill the end of the battle");
+		this.takeMana(points);
 	}
 
 	@Override
 	public void attack() {
-		
+		System.out.println("Your mage attacks the enemy!");
+	}
+
+	public Spell getSpell() {
+		return secondarySpell;
 	}
 
 	@Override
@@ -39,8 +46,8 @@ public class Mage extends Hero {
 	}
 
 	@Override
-	public int getSecondaryDamage() {
-		return secondarySpell.getDamage();
+	public DamageDealers getSecondaryDmgDealer() {
+		return secondarySpell;
 	}
 
 }

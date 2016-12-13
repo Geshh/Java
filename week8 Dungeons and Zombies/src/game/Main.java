@@ -50,15 +50,15 @@ public class Main {
 		}
 
 		System.out.println("\nTime to choose a starting weapon for your " + hero.getHeroClass() + ": ");
-		hero.getAvailableWeapons(hero.getHeroClass());
+		FileParser.getAvailableWeapons(hero.getHeroClass());
 		System.out.println("Enter your choice: ");
 		int weaponChoice = scanner.nextInt();
-		Weapon weapon = hero.readAndEquipWeapon(weaponChoice, hero.getHeroClass());
+		Weapon weapon = FileParser.readAndEquipWeapon(weaponChoice, hero.getHeroClass());
 		hero.equip(weapon);
 		System.out.println("\n\nTime to choose your primary spell! ");
-		hero.getAvailableSpells(hero.getHeroClass());
+		FileParser.getAvailableSpells(hero.getHeroClass());
 		int spellChoice = scanner.nextInt();
-		Spell spell = hero.readAndEquipSpells(spellChoice, hero.getHeroClass());
+		Spell spell = FileParser.readAndEquipSpells(spellChoice, hero.getHeroClass());
 		hero.learn(spell);
 
 		switch (hero.getHeroClass()) {

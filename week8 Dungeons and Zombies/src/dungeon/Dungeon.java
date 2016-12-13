@@ -13,7 +13,7 @@ import characters.Hero;
 import damageDealers.Spell;
 import damageDealers.Weapon;
 import fight.Fight;
-import treasures.Treasures;
+import treasures.Treasure;
 
 public class Dungeon {
 
@@ -37,7 +37,7 @@ public class Dungeon {
 			System.out.println("Sorry treasure is empty\n");
 			break;
 		case 1:
-			Spell spell = Treasures.getRandomSpell();
+			Spell spell = Treasure.getRandomSpell();
 			spell.getSpellInfo();
 			System.out.println("Do you with to learn new spell and replace it with your current primary spell?");
 			System.out.println("Yes/No:");
@@ -48,7 +48,7 @@ public class Dungeon {
 			}
 			break;
 		case 2:
-			Weapon weapon = Treasures.getRandomWeapon();
+			Weapon weapon = Treasure.getRandomWeapon();
 			System.out.println("You found ");
 			weapon.getWeaponInfo();
 			System.out.println("Do you with to equip new weapon and replace it with your current primary weapon?");
@@ -128,7 +128,7 @@ public class Dungeon {
 				System.out.println("2: Automatic fight");
 				int choice = scanner.nextInt();
 
-				//Generate enemy
+				// Generate enemy
 				int temp = hero.getHealth() / 2;
 				Random rand = new Random();
 				int enemyHealth = rand.nextInt(temp) + temp;
@@ -144,7 +144,13 @@ public class Dungeon {
 					break;
 				case 2:
 					System.out.println("Lay back and enjoy the fight!");
+					Fight.automaticFight(hero, enemy);
 					break;
+				}
+
+				if (!hero.isAlive()) {
+					System.out.println("Game Over!");
+					return;
 				}
 
 			} else if (destination.equals("T")) {
@@ -163,135 +169,6 @@ public class Dungeon {
 			curHeroPosition.setY(newY);
 			map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
 		}
-
-		// switch (direction) {
-		// case "left":
-		// if (curHeroPosition.getY() - 1 < 0) {
-		// System.out.println("Cannot step outside the map");
-		// } else {
-		// String destination =
-		// map[curHeroPosition.getX()][curHeroPosition.getY() - 1];
-		// if (destination.equals("E")) {
-		// System.out.println("ENEMY");
-		// System.out.println("1: Manual fight");
-		// System.out.println("2: Automatic fight");
-		// // START FIGHT
-		// } else if (destination.equals("T")) {
-		// System.out.println("TREASURE");
-		// Random randomGen = new Random();
-		// int randomNumber = randomGen.nextInt(4);
-		// pickTreasure(randomNumber);
-		// // OPEN TREASURE
-		// } else if (destination.equals("G")) {
-		// System.out.println("LEVEL COMPLETED");
-		// isLevelComplete = true;
-		// // LEVEL COMPLETE
-		// } else if (destination.equals("#")) {
-		// System.out.println("Obstacle encountered , move other direction ");
-		// break;
-		// }
-		// hero.takeMana(hero.getManaRegen());
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
-		// curHeroPosition.setY(curHeroPosition.getY() - 1);
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
-		// }
-		// break;
-		// case "right":
-		// if (curHeroPosition.getY() + 1 >= map[curHeroPosition.getX()].length)
-		// {
-		// System.out.println("Cannot step outside the map");
-		// } else {
-		// String destination =
-		// map[curHeroPosition.getX()][curHeroPosition.getY() + 1];
-		// if (destination.equals("E")) {
-		// System.out.println("ENEMY");
-		// System.out.println("1: Manual fight");
-		// System.out.println("2: Automatic fight");
-		// // START FIGHT
-		// } else if (destination.equals("T")) {
-		// System.out.println("TREASURE");
-		// Random randomGen = new Random();
-		// int randomNumber = randomGen.nextInt(4);
-		// pickTreasure(randomNumber);
-		// // OPEN TREASURE
-		// } else if (destination.equals("G")) {
-		// System.out.println("LEVEL COMPLETED");
-		// isLevelComplete = true;
-		// // LEVEL COMPLETE
-		// } else if (destination.equals("#")) {
-		// System.out.println("Obstacle encountered , move other direction ");
-		// break;
-		// }
-		// hero.takeMana(hero.getManaRegen());
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
-		// curHeroPosition.setY(curHeroPosition.getY() + 1);
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
-		// }
-		// break;
-		// case "up":
-		// if (curHeroPosition.getX() - 1 < 0) {
-		// System.out.println("Cannot step outside the map");
-		// } else {
-		// String destination = map[curHeroPosition.getX() -
-		// 1][curHeroPosition.getY()];
-		// if (destination.equals("E")) {
-		// System.out.println("ENEMY");
-		// System.out.println("1: Manual fight");
-		// System.out.println("2: Automatic fight");
-		// // START FIGHT
-		// } else if (destination.equals("T")) {
-		// System.out.println("TREASURE");
-		// Random randomGen = new Random();
-		// int randomNumber = randomGen.nextInt(4);
-		// pickTreasure(randomNumber);
-		// // OPEN TREASURE
-		// } else if (destination.equals("G")) {
-		// System.out.println("LEVEL COMPLETED");
-		// isLevelComplete = true;
-		// // LEVEL COMPLETE
-		// } else if (destination.equals("#")) {
-		// System.out.println("Obstacle encountered , move other direction ");
-		// break;
-		// }
-		// hero.takeMana(hero.getManaRegen());
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
-		// curHeroPosition.setX(curHeroPosition.getX() - 1);
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
-		// }
-		// break;
-		// case "down":
-		// if (curHeroPosition.getX() + 1 >= map.length) {
-		// System.out.println("Cannot step outside the map");
-		// } else {
-		// String destination = map[curHeroPosition.getX() +
-		// 1][curHeroPosition.getY()];
-		// if (destination.equals("E")) {
-		// System.out.println("ENEMY");
-		// System.out.println("1: Manual fight");
-		// System.out.println("2: Automatic fight");
-		// // START FIGHT
-		// } else if (destination.equals("T")) {
-		// System.out.println("TRESURE");
-		// Random randomGen = new Random();
-		// int randomNumber = randomGen.nextInt(4);
-		// pickTreasure(randomNumber);
-		// // OPEN TREASURE
-		// } else if (destination.equals("G")) {
-		// System.out.println("LEVEL COMPLETED");
-		// isLevelComplete = true;
-		// // LEVEL COMPLETE
-		// } else if (destination.equals("#")) {
-		// System.out.println("Obstacle encountered , move other direction ");
-		//
-		// break;
-		// }
-		// hero.takeMana(hero.getManaRegen());
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = ".";
-		// curHeroPosition.setX(curHeroPosition.getX() + 1);
-		// map[curHeroPosition.getX()][curHeroPosition.getY()] = "H";
-		// }
-		// break;
-		// }
 	}
 
 	public void spawn() {

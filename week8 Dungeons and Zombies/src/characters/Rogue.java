@@ -1,10 +1,11 @@
 package characters;
 
+import damageDealers.DamageDealers;
 import damageDealers.Weapon;
 
 public class Rogue extends Hero {
 
-	Weapon secondaryWeapon;
+	private Weapon secondaryWeapon;
 
 	public Rogue(String name, String title, int health, int mana, int manaRegen) {
 		super(name, title, health, mana, manaRegen);
@@ -12,14 +13,14 @@ public class Rogue extends Hero {
 	}
 
 	@Override
-	public void usePassiveAbility() {
-		System.out.println("Stealth attack");
+	public void usePassiveAbility(int damage , Enemy enemy) {
+		System.out.println("Rogue strikes again from the shadows");
+		enemy.takeDamage(damage);
 	}
 
 	@Override
 	public void attack() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Your rogue attacks the enemy!");
 	}
 
 	@Override
@@ -39,13 +40,10 @@ public class Rogue extends Hero {
 		System.out.println("-Step back.");
 		System.out.println("-Use potion.");
 	}
-
+	
 	@Override
-	public int getSecondaryDamage() {
-		if (secondaryWeapon != null) {
-			return secondaryWeapon.getDamage();
-		}
-		return 0;
+	public DamageDealers getSecondaryDmgDealer() {
+		return secondaryWeapon;
 	}
 
 }
