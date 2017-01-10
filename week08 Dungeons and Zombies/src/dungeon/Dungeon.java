@@ -192,7 +192,7 @@ public class Dungeon {
 	}
 
 	private void generateMap(String levelName) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Levels/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Levels/";
 		FILENAME += levelName;
 
 		Queue<String> rows = new LinkedList<>();

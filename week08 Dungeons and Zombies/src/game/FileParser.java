@@ -10,7 +10,7 @@ import damageDealers.Weapon;
 public class FileParser {
 
 	public static void getAvailableSpells(String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Spells/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Spells/";
 		FILENAME += heroClass;
 		FILENAME += "Spells";
 
@@ -35,7 +35,7 @@ public class FileParser {
 	}
 	
 	public static void getAvailableWeapons(String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Weapons/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Weapons/";
 		FILENAME += heroClass;
 		FILENAME += "Weapons";
 
@@ -60,7 +60,7 @@ public class FileParser {
 
 	@SuppressWarnings("resource")
 	public static Spell readAndEquipSpells(int choice, String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Spells/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Spells/";
 		FILENAME += heroClass;
 		FILENAME += "Spells";
 
@@ -97,7 +97,7 @@ public class FileParser {
 
 	@SuppressWarnings("resource")
 	public static Weapon readAndEquipWeapon(int choice, String heroClass) {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Weapons/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Weapons/";
 		FILENAME += heroClass;
 		FILENAME += "Weapons";
 

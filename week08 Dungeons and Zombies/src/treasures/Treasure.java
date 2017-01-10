@@ -12,7 +12,7 @@ public class Treasure {
 
 	@SuppressWarnings("resource")
 	public static Spell getRandomSpell() {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Treasures/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Treasures/";
 		FILENAME += "Spells";
 
 		BufferedReader br = null;
@@ -52,7 +52,7 @@ public class Treasure {
 
 	@SuppressWarnings("resource")
 	public static Weapon getRandomWeapon() {
-		String FILENAME = "/home/geshh/code/101java/week8 Dungeons and Zombies/Treasures/";
+		String FILENAME = "/home/geshh/code/101java/week08 Dungeons and Zombies/Treasures/";
 		FILENAME += "Weapons";
 
 		BufferedReader br = null;
